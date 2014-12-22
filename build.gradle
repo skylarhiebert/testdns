@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral()
+}
+
+idea {
+    // removes hardcoded user names from IDEA iml files and uses $USER_HOME instead
+    pathVariables USER_HOME: file(System.getProperty("user.home"))
+}
+
+project.sourceCompatibility = "1.6"
+mainClassName = "org.testng.TestNG"
+test {
+    useTestNG {
+        useDefaultListeners = true
+    }
+}
+
+dependencies {
+    testCompile 'org.testng:testng:6.8.13'
+}
